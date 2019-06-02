@@ -1,0 +1,1 @@
+[{"accountNumber":"585309209","accountName":"SGSavings729","accountType":"Savings","currency":"AUD","links":[{"rel":"account-transactions","href":"http://localhost/user/{user}/accounts/585309209/transactions"}]}]

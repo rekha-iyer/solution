@@ -1,0 +1,1 @@
+{"userId":"1","transactionDetailsList":[{"accountNumber":"791066619","accountName":"AUSavings933","currency":"AUD","creditAmount":3.142},{"accountNumber":"791066619","accountName":"AUSavings933","currency":"AUD","creditAmount":2.17}],"_links":{"user-accounts":{"href":"http://localhost/user/1/accounts"}}}

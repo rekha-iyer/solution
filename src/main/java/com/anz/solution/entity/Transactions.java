@@ -65,4 +65,36 @@ public class Transactions {
     public String getTransactionNarrative() {
         return transactionNarrative;
     }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setDebitAmount(BigDecimal debitAmount) {
+        this.debitAmount = debitAmount;
+    }
+
+    public void setCreditAmount(BigDecimal creditAmount) {
+        this.creditAmount = creditAmount;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public void setTransactionNarrative(String transactionNarrative) {
+        this.transactionNarrative = transactionNarrative;
+    }
 }

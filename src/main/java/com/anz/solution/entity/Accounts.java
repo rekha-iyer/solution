@@ -61,6 +61,34 @@ public class Accounts {
         return openingAvailableBalance;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public void setBalanceDate(Date balanceDate) {
+        this.balanceDate = balanceDate;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setOpeningAvailableBalance(BigDecimal openingAvailableBalance) {
+        this.openingAvailableBalance = openingAvailableBalance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
