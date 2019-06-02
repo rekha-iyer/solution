@@ -1,4 +1,4 @@
-package com.anz.solution.convertor;
+package com.anz.solution.converter;
 
 import com.anz.solution.entity.Accounts;
 import com.anz.solution.model.AccountDetails;

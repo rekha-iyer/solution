@@ -1,7 +1,7 @@
 package com.anz.solution.service;
 
-import com.anz.solution.convertor.AccountsToAccountDetailsConverter;
-import com.anz.solution.convertor.TransactionsToTransactionDetailsConverter;
+import com.anz.solution.converter.AccountsToAccountDetailsConverter;
+import com.anz.solution.converter.TransactionsToTransactionDetailsConverter;
 import com.anz.solution.entity.Accounts;
 import com.anz.solution.entity.Transactions;
 import com.anz.solution.model.AccountDetails;
