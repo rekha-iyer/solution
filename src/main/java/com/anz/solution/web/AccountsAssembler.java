@@ -19,7 +19,7 @@ public class AccountsAssembler extends ResourceAssemblerSupport<AccountDetails, 
         AccountsResource resource = new AccountsResource(accountDetails);
 
         resource.add(linkTo(methodOn(SolutionController.class)
-                .findAccounts(accountDetails.getUserId())).withSelfRel());
+                .findTransactions(accountDetails.getUserId(), accountDetails.getAccountNumber())).withRel("account-transactions"));
 
         return resource;
     }

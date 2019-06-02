@@ -1,11 +1,9 @@
 package com.anz.solution.web;
 
-import com.anz.solution.entity.Accounts;
-import com.anz.solution.entity.Transactions;
 import com.anz.solution.model.AccountDetails;
 import com.anz.solution.model.TransactionDetails;
+import com.anz.solution.model.UserTransactionDetails;
 import com.anz.solution.service.SolutionService;
-import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -27,14 +23,14 @@ public class SolutionController {
 
     private AccountsAssembler accountsAssembler;
 
-    private TransactionsAssembler transactionsAssembler;
+    private UserTransactionDetailsAssembler userTransactionDetailsAssembler;
 
     public SolutionController(SolutionService solutionService,
                               AccountsAssembler accountsAssembler,
-                              TransactionsAssembler transactionsAssembler) {
+                              UserTransactionDetailsAssembler userTransactionDetailsAssembler) {
         this.solutionService = solutionService;
         this.accountsAssembler = accountsAssembler;
-        this.transactionsAssembler = transactionsAssembler;
+        this.userTransactionDetailsAssembler = userTransactionDetailsAssembler;
     }
 
     @RequestMapping(method = GET, value = "/user/{user}/accounts", produces = HAL_MEDIA_TYPE)
@@ -42,17 +38,20 @@ public class SolutionController {
     public List<AccountsResource> findAccounts(@PathVariable final String user) {
 
         List<AccountDetails> accountsList = solutionService.findAccounts(user);
-        Link selfLink = linkTo(methodOn(SolutionController.class)
-                .findAccounts(user))
-                .withSelfRel();
         return accountsAssembler.toResources(accountsList);
     }
 
-    @RequestMapping(method = GET, value = "/accounts/{account}/transactions", produces = HAL_MEDIA_TYPE)
+    @RequestMapping(method = GET, value = "/user/{user}/accounts/{account}/transactions", produces = HAL_MEDIA_TYPE)
     @ResponseStatus(OK)
-    public List<TransactionsResource> findTransactions(@PathVariable final String account) {
+    public UserTransactionDetailsResource findTransactions(@PathVariable final String user,
+                                                       @PathVariable final String account) {
         List<TransactionDetails> transactionsList = solutionService.findTransactions(account);
-        return transactionsAssembler.toResources(transactionsList);
+
+        UserTransactionDetails userTransactionDetails = new UserTransactionDetails();
+        userTransactionDetails.setUserId(user);
+        userTransactionDetails.setTransactionDetailsList(transactionsList);
+
+        return userTransactionDetailsAssembler.toResource(userTransactionDetails);
     }
 
 }
